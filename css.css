@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	margin:0px;
+	padding:0px;
+}
+#all{
+	background:#5ea6eb;
+	width:600px;
+	height:800px;
+	border:inset dashed #000;
+	margin:0px;
+	padding:0px;
+	background:url("eatSnakeTu/all.png");
+}
+#grade{
+	width:600px;
+	height:100px;
+	text-align:center;
+}
+#display{
+	width:600px;
+	height:600px;
+	text-align:center;
+}
+#food{
+	width:110px;
+	height:45px;
+	background:url("eatSnakeTu/food.png");
+	position:absolute;
+}
+#snake{
+	width:135px;
+	height:133px;
+	
+	position:absolute;
+	left:300px;
+	top:300px;
+	background:url("eatSnakeTu/snakeright1.png");
+}
+#operation{
+	width:600px;
+	height:100px;
+}
+#operation div{
+	width:50px;
+	height:30px;
+	background:white;
+	border:inset 1px #000;
+	text-align:center;
+}
+#up{
+	margin:0px 0px 0px 280px;
+}
+#left{
+	margin-left:227px;
+}
+#left,#down,#right{
+	float:left;
+	
+}
+	

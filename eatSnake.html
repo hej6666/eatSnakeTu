@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>贪吃蛇</title>
+<link href="css.css" rel="stylesheet" type="text/css" />
+<script>
+var moveInterval=snakeInterval=null;
+var speed=30;
+var snakeTime=60;
+var moveTime=60;
+var tup=tleft=300;
+var score=0;
+var t=1;
+var foodLeft=Math.round(Math.random()*490);
+var foodTop=Math.round(Math.random()*555)+100;
+window.onload=function(){
+	food.style.top=foodTop+"px";
+	food.style.left=foodLeft+"px";
+	snakeInterval=setInterval(function(){
+									   if(t==1){
+										   
+									   	   snake.style.background='url("eatSnakeTu/snakeright1.png")';
+									   }
+									   else if(t==2){
+										   snake.style.background='url("eatSnakeTu/snakeright2.png")';
+									   }
+									   else {
+										   snake.style.background='url("eatSnakeTu/snakeright3.png")';
+										   t=0;
+									   }
+									   t++;
+									   },snakeTime);
+									   
+}
+function addScore(){
+	foodLeft=Math.round(Math.random()*490);
+	foodTop=Math.round(Math.random()*555)+100;
+	food.style.top=foodTop+"px";
+	food.style.left=foodLeft+"px";
+	score=score+Math.ceil(Math.random()*3);
+	grade.innerHTML="当前分数为："+score;
+}
+
+function move(e){
+	clearInterval(moveInterval);
+	if(e.keyCode=="37"){
+		clearInterval(snakeInterval);
+		snakeInterval=setInterval(function(){
+									   if(t==1){
+										   
+									   	   snake.style.background='url("eatSnakeTu/snakeleft1.png")';
+									   }
+									   else if(t==2){
+										   snake.style.background='url("eatSnakeTu/snakeleft2.png")';
+									   }
+									   else {
+										   snake.style.background='url("eatSnakeTu/snakeleft3.png")';
+										   t=0;
+									   }
+									   t++;
+									   },snakeTime);
+		turn("left");
+	}
+	else if(e.keyCode=="38"){
+		clearInterval(snakeInterval);
+		snakeInterval=setInterval(function(){
+									   if(t==1){
+										   
+									   	   snake.style.background='url("eatSnakeTu/snakeup1.png")';
+									   }
+									   else if(t==2){
+										   snake.style.background='url("eatSnakeTu/snakeup2.png")';
+									   }
+									   else {
+										   snake.style.background='url("eatSnakeTu/snakeup3.png")';
+										   t=0;
+									   }
+									   t++;
+									   },snakeTime);
+		turn("up");
+	}
+	else if(e.keyCode=="39"){
+		clearInterval(snakeInterval);
+		snakeInterval=setInterval(function(){
+									   if(t==1){
+										   
+									   	   snake.style.background='url("eatSnakeTu/snakeright1.png")';
+									   }
+									   else if(t==2){
+										   snake.style.background='url("eatSnakeTu/snakeright2.png")';
+									   }
+									   else {
+										   snake.style.background='url("eatSnakeTu/snakeright3.png")';
+										   t=0;
+									   }
+									   t++;
+									   },snakeTime);
+		turn("right");
+
+	}
+	else if(e.keyCode=="40"){
+		clearInterval(snakeInterval);
+		snakeInterval=setInterval(function(){
+									   if(t==1){
+										   
+									   	   snake.style.background='url("eatSnakeTu/snakedown1.png")';
+									   }
+									   else if(t==2){
+										   snake.style.background='url("eatSnakeTu/snakedown2.png")';
+									   }
+									   else {
+										   snake.style.background='url("eatSnakeTu/snakedown3.png")';
+										   t=0;
+									   }
+									   t++;
+									   },snakeTime);
+		turn("down");
+	}
+}
+function turn(d){
+
+	moveInterval=setInterval(function(){
+	if(d=="left"){
+		up.style.background='none';
+		down.style.background='none';
+		left.style.background='none';
+		right.style.background='none';
+		left.style.background='gray';
+		if(tleft-speed<=0){
+			tleft=0;
+		}
+		else{
+			tleft=tleft-speed;
+		}
+		snake.style.left=tleft+"px";
+		if(tup+133>=foodTop&&tup<=foodTop+45&&tleft+135>=foodLeft&&tleft<=foodLeft+110){
+			
+			addScore();
+		}
+	}
+	else if(d=="up"){
+		up.style.background='none';
+		down.style.background='none';
+		left.style.background='none';
+		right.style.background='none';
+		up.style.background='gray';
+		if(tup-speed<=100){
+			tup=100;
+		}
+		else{
+			tup=tup-speed;
+		}
+		snake.style.top=tup+"px";
+		if(tup+133>=foodTop&&tup<=foodTop+45&&tleft+135>=foodLeft&&tleft<=foodLeft+110){
+			addScore();
+		}
+	}
+	else if(d=="down"){
+		up.style.background='none';
+		down.style.background='none';
+		left.style.background='none';
+		right.style.background='none';
+		down.style.background='gray';
+		if(tup+speed>=567){
+			tup=567;
+		}
+		else{
+			tup=tup+speed;
+		}
+		snake.style.top=tup+"px";
+		if(tup+133>=foodTop&&tup<=foodTop+45&&tleft+135>=foodLeft&&tleft<=foodLeft+110){
+			addScore();
+		}
+	}
+	else if(d=="right"){
+		up.style.background='none';
+		down.style.background='none';
+		left.style.background='none';
+		right.style.background='none';
+		right.style.background='gray';
+		if(tleft+speed>=465){
+			tleft=465;
+		}
+		else{
+			tleft=tleft+speed;
+		}
+		snake.style.left=tleft+"px";
+		if(tup+133>=foodTop&&tup<=foodTop+45&&tleft+135>=foodLeft&&tleft<=foodLeft+110){
+			addScore();
+		}
+	}
+								  },moveTime)
+}
+</script>
+</head>
+
+<body onKeyDown=move(event)>
+	<div id="all">
+    	<div id="grade">
+        	目前分数为：0
+        </div>
+    	<div id="display">
+        	
+        	<div id="food">
+            	
+            </div>
+            <div id="snake">
+            	
+            </div>
+        </div>
+        <div id="operation">
+        	<div id="up" class="fx" onclick=move(event)>
+            	↑
+       		</div>
+            <div id="left" class="fx" onclick=move(event)>
+            	←
+            </div>
+            <div id="down" class="fx" onclick=move(event)>
+            	↓
+            </div>
+            <div id="right" class="fx" onclick=move(event)>
+           		→
+            </div>
+        </div>
+    </div>
+</body>
+</html>
