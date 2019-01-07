@@ -44,7 +44,7 @@ function addScore(){
 
 function move(e){
 	clearInterval(moveInterval);
-	if(e.keyCode=="37"){
+	if(e.keyCode=="37"||e=="left"){
 		clearInterval(snakeInterval);
 		snakeInterval=setInterval(function(){
 									   if(t==1){
@@ -62,7 +62,7 @@ function move(e){
 									   },snakeTime);
 		turn("left");
 	}
-	else if(e.keyCode=="38"){
+	else if(e.keyCode=="38"||e=="up"){
 		clearInterval(snakeInterval);
 		snakeInterval=setInterval(function(){
 									   if(t==1){
@@ -80,7 +80,7 @@ function move(e){
 									   },snakeTime);
 		turn("up");
 	}
-	else if(e.keyCode=="39"){
+	else if(e.keyCode=="39"||e=="right"){
 		clearInterval(snakeInterval);
 		snakeInterval=setInterval(function(){
 									   if(t==1){
@@ -99,7 +99,7 @@ function move(e){
 		turn("right");
 
 	}
-	else if(e.keyCode=="40"){
+	else if(e.keyCode=="40"||e=="down"){
 		clearInterval(snakeInterval);
 		snakeInterval=setInterval(function(){
 									   if(t==1){
@@ -210,16 +210,16 @@ function turn(d){
             </div>
         </div>
         <div id="operation">
-        	<div id="up" class="fx" onclick=move(event)>
+        	<div id="up" class="fx" onclick=move("up")>
             	↑
        		</div>
-            <div id="left" class="fx" onclick=move(event)>
+            <div id="left" class="fx" onclick=move("left")>
             	←
             </div>
-            <div id="down" class="fx" onclick=move(event)>
+            <div id="down" class="fx" onclick=move("down")>
             	↓
             </div>
-            <div id="right" class="fx" onclick=move(event)>
+            <div id="right" class="fx" onclick=move("right")>
            		→
             </div>
         </div>
