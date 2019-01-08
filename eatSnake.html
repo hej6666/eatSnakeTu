@@ -18,18 +18,11 @@ window.onload=function(){
 	food.style.top=foodTop+"px";
 	food.style.left=foodLeft+"px";
 	snakeInterval=setInterval(function(){
-									   if(t==1){
-										   
-									   	   snake.style.background='url("eatSnakeTu/snakeright1.png")';
-									   }
-									   else if(t==2){
-										   snake.style.background='url("eatSnakeTu/snakeright2.png")';
-									   }
-									   else {
-										   snake.style.background='url("eatSnakeTu/snakeright3.png")';
-										   t=0;
-									   }
+									   if(t<3){   
 									   t++;
+									   }
+									   else{t=1;}
+									   snake.style.background='url("eatSnakeTu/snakeright'+t+'.png")';
 									   },snakeTime);
 									   
 }
@@ -41,82 +34,31 @@ function addScore(){
 	score=score+Math.ceil(Math.random()*3);
 	grade.innerHTML="当前分数为："+score;
 }
-
+function snakeSparkling(fangxiang){
+	if(t<3){   
+		t++;
+	}
+	else{
+		t=1;}
+	snake.style.background='url("eatSnakeTu/snake'+fangxiang+t+'.png")';
+}
 function move(e){
 	clearInterval(moveInterval);
 	if(e.keyCode=="37"||e=="left"){
-		clearInterval(snakeInterval);
-		snakeInterval=setInterval(function(){
-									   if(t==1){
-										   
-									   	   snake.style.background='url("eatSnakeTu/snakeleft1.png")';
-									   }
-									   else if(t==2){
-										   snake.style.background='url("eatSnakeTu/snakeleft2.png")';
-									   }
-									   else {
-										   snake.style.background='url("eatSnakeTu/snakeleft3.png")';
-										   t=0;
-									   }
-									   t++;
-									   },snakeTime);
-		turn("left");
+		e="left";	
 	}
 	else if(e.keyCode=="38"||e=="up"){
-		clearInterval(snakeInterval);
-		snakeInterval=setInterval(function(){
-									   if(t==1){
-										   
-									   	   snake.style.background='url("eatSnakeTu/snakeup1.png")';
-									   }
-									   else if(t==2){
-										   snake.style.background='url("eatSnakeTu/snakeup2.png")';
-									   }
-									   else {
-										   snake.style.background='url("eatSnakeTu/snakeup3.png")';
-										   t=0;
-									   }
-									   t++;
-									   },snakeTime);
-		turn("up");
+		e="up";	
 	}
 	else if(e.keyCode=="39"||e=="right"){
-		clearInterval(snakeInterval);
-		snakeInterval=setInterval(function(){
-									   if(t==1){
-										   
-									   	   snake.style.background='url("eatSnakeTu/snakeright1.png")';
-									   }
-									   else if(t==2){
-										   snake.style.background='url("eatSnakeTu/snakeright2.png")';
-									   }
-									   else {
-										   snake.style.background='url("eatSnakeTu/snakeright3.png")';
-										   t=0;
-									   }
-									   t++;
-									   },snakeTime);
-		turn("right");
-
+		e="right";
 	}
 	else if(e.keyCode=="40"||e=="down"){
-		clearInterval(snakeInterval);
-		snakeInterval=setInterval(function(){
-									   if(t==1){
-										   
-									   	   snake.style.background='url("eatSnakeTu/snakedown1.png")';
-									   }
-									   else if(t==2){
-										   snake.style.background='url("eatSnakeTu/snakedown2.png")';
-									   }
-									   else {
-										   snake.style.background='url("eatSnakeTu/snakedown3.png")';
-										   t=0;
-									   }
-									   t++;
-									   },snakeTime);
-		turn("down");
+		e="down";	
 	}
+	clearInterval(snakeInterval);
+	snakeInterval=setInterval(function(){snakeSparkling(e);},snakeTime);
+	turn(e);
 }
 function turn(d){
 
